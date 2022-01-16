@@ -38,7 +38,8 @@ const main = async ()=>{
         let urls = [
           'https://ifconfig.me/ip',
           'https://ip-fast.com/api/ip/',
-          'https://api.ipify.org'
+          'https://api.ipify.org',
+          'https://icanhazip.com'
         ]
         let index = Math.floor(Math.random() * urls.length)
         let url = urls[index]
