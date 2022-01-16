@@ -11,11 +11,26 @@ const main = async ()=>{
 
     program.action(async () => {
       const getChinaIp = async () => {
-        let url = 'https://www.taobao.com/help/getip.php'
+        let urls = [
+          'https://myip.ipip.net/json',
+          'https://www.taobao.com/help/getip.php'
+        ]
+        let index = Math.floor(Math.random() * urls.length)
+        let url = urls[index]
         let response = await axios.get(url)
         let ip = response.data
-        ip = ip.replaceAll(`ipCallback({ip:"`, '')
-        ip = ip.replaceAll(`"})`, '')
+        
+        // https://myip.ipip.net/json 
+        if(index === 0){
+          ip = ip.data.ip
+        }
+
+        // https://www.taobao.com/help/getip.php
+        if(index === 1){
+          ip = ip.replaceAll(`ipCallback({ip:"`, '')
+          ip = ip.replaceAll(`"})`, '')
+        }
+        
         return ip
       }
     
@@ -25,7 +40,7 @@ const main = async ()=>{
           'https://ip-fast.com/api/ip/',
           'https://api.ipify.org'
         ]
-        let index = Math.floor(Math.random() * 3)
+        let index = Math.floor(Math.random() * urls.length)
         let url = urls[index]
         let response = await axios.get(url)
         let ip = response.data
