@@ -22,9 +22,10 @@ const main = async ()=>{
       const getNonChinaIp = async () => {
         let urls = [
           'https://ifconfig.me/ip',
-          'https://ip-fast.com/api/ip/'
+          'https://ip-fast.com/api/ip/',
+          'https://api.ipify.org'
         ]
-        let index = Math.floor(Math.random() * 2)
+        let index = Math.floor(Math.random() * 3)
         let url = urls[index]
         let response = await axios.get(url)
         let ip = response.data
